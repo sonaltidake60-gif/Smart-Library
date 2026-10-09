@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Staff Management</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+
+<div class="sidebar">
+
+    <div class="logo">
+        <h2>Smart Library</h2>
+    </div>
+
+    <ul>
+
+        <li>
+            <a href="dashboard.html">
+                <i class="fa-solid fa-chart-line"></i>
+                Dashboard
+            </a>
+        </li>
+
+        <li>
+            <a href="books.html">
+                <i class="fa-solid fa-book"></i>
+                Books
+            </a>
+        </li>
+
+        <li>
+            <a href="students.html">
+                <i class="fa-solid fa-user-graduate"></i>
+                Students
+            </a>
+        </li>
+
+        <!-- STAFF MANAGEMENT -->
+
+        <li>
+            <a href="staff-management.html">
+                <i class="fa-solid fa-user-tie"></i>
+                Staff Management
+            </a>
+        </li>
+
+        <li>
+            <a href="issue.html">
+                <i class="fa-solid fa-book-open"></i>
+                Issue Book
+            </a>
+        </li>
+
+        <li>
+            <a href="return.html">
+                <i class="fa-solid fa-rotate-left"></i>
+                Return Book
+            </a>
+        </li>
+
+        <li>
+            <a href="login.html">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Logout
+            </a>
+        </li>
+
+    </ul>
+
+</div>
+
+
+<!-- MAIN CONTENT -->
+
+<div class="main">
+
+    <h1>Staff Management</h1>
+
+    <div class="form-box">
+
+        <h2>Add Staff</h2>
+
+        <input type="text"
+               id="staffName"
+               placeholder="Staff Name">
+
+        <input type="text"
+               id="staffUsername"
+               placeholder="Username">
+
+        <input type="password"
+               id="staffPassword"
+               placeholder="Password">
+
+        <input type="text"
+               id="staffMobile"
+               placeholder="Mobile Number">
+
+        <button onclick="saveStaff()">
+            Save Staff
+        </button>
+
+    </div>
+
+
+    <div class="recent">
+
+        <h2>Staff List</h2>
+
+        <table id="staffTable">
+
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Username</th>
+                <th>Mobile</th>
+                <th>Status</th>
+            </tr>
+
+        </table>
+
+    </div>
+
+</div>
+
+
+<script src="script.js"></script>
+
+
+<script>
+
+function saveStaff() {
+
+    let name =
+        document.getElementById("staffName").value.trim();
+
+    let username =
+        document.getElementById("staffUsername").value.trim();
+
+    let password =
+        document.getElementById("staffPassword").value.trim();
+
+    let mobile =
+        document.getElementById("staffMobile").value.trim();
+
+
+    if (name === "" || username === "" || password === "") {
+
+        alert("Please fill all required fields");
+
+        return;
+    }
+
+
+    let staffList =
+        JSON.parse(localStorage.getItem("staffList")) || [];
+
+
+    staffList.push({
+
+        name: name,
+        username: username,
+        password: password,
+        mobile: mobile
+
+    });
+
+
+    localStorage.setItem(
+        "staffList",
+        JSON.stringify(staffList)
+    );
+
+
+    alert("Staff Saved Successfully");
+
+
+    document.getElementById("staffName").value = "";
+    document.getElementById("staffUsername").value = "";
+    document.getElementById("staffPassword").value = "";
+    document.getElementById("staffMobile").value = "";
+
+
+    loadStaff();
+
+}
+
+
+function loadStaff() {
+
+    let table =
+        document.getElementById("staffTable");
+
+    while (table.rows.length > 1) {
+        table.deleteRow(1);
+    }
+
+
+    let staffList =
+        JSON.parse(localStorage.getItem("staffList")) || [];
+
+
+    staffList.forEach(function(staff, index) {
+
+        let row = table.insertRow(-1);
+
+        row.insertCell(0).innerText = index + 1;
+
+        row.insertCell(1).innerText =
+            staff.name;
+
+        row.insertCell(2).innerText =
+            staff.username;
+
+        row.insertCell(3).innerText =
+            staff.mobile || "-";
+
+        row.insertCell(4).innerText =
+            "Active";
+
+    });
+
+}
+
+
+window.onload = function() {
+
+    loadStaff();
+
+};
+
+</script>
+
+</body>
+
+</html>

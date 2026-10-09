@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Issue Book - LibraryX</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+<body>
+
+
+<div class="dashboard">
+
+
+<!-- Sidebar -->
+
+<div class="sidebar">
+
+<h2>Smart Library</h2>
+
+<ul>
+
+<li>
+<a href="dashboard.html">
+<i class="fa-solid fa-house"></i>
+Dashboard
+</a>
+</li>
+
+
+<li>
+<a href="books.html">
+<i class="fa-solid fa-book"></i>
+Books
+</a>
+</li>
+
+
+<li>
+<a href="students.html">
+<i class="fa-solid fa-user-graduate"></i>
+Students
+</a>
+</li>
+
+<li>
+    <a href="staff-management.html">
+        <i class="fa-solid fa-user-tie"></i>
+        Staff Management
+    </a>
+</li>
+<li>
+<a href="issue.html">
+<i class="fa-solid fa-book-open"></i>
+Issue Book
+</a>
+</li>
+
+
+<li>
+<a href="return.html">
+<i class="fa-solid fa-rotate-left"></i>
+Return Book
+</a>
+</li>
+
+
+<li>
+<a href="index.html">
+<i class="fa-solid fa-right-from-bracket"></i>
+Logout
+</a>
+</li>
+
+
+</ul>
+
+</div>
+
+
+
+<!-- Main Content -->
+
+
+<div class="main">
+
+
+<div class="topbar">
+
+<h1>
+📖 Issue Book
+</h1>
+
+</div>
+
+
+
+<!-- Issue Form -->
+
+
+<div class="form-box">
+
+
+<h2>Issue New Book</h2>
+
+
+<div class="form-row">
+
+    <input type="text" id="student" placeholder="Student Name">
+
+    <input type="text" id="book" placeholder="Book Name">
+
+    <input type="date" id="date" onchange="filterIssuedBooks()">
+
+</div><button onclick="issueBook()">Issue Book</button>
+</div>
+
+
+
+
+<!-- Issued Books Table -->
+
+
+<div class="recent">
+
+
+<h2>Issued Books</h2>
+<input type="text" id="issueStudentSearch"
+       placeholder="Search Name"
+       onkeyup="searchIssuedStudent()">
+
+<table id="issueTable">
+
+<tr>
+
+<th>ID</th>
+
+<th>Student</th>
+
+<th>Book</th>
+
+<th>Issue Date</th>
+
+<th>Status</th>
+
+</tr>
+
+
+
+
+</div>
+
+
+</div>
+
+
+</div>
+<script src="script.js"></script>
+
+</body>
+</html>
+

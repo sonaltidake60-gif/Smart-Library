@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Login - Smart Library</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        .login-box {
+            width: 380px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+            color: white;
+        }
+
+        .logo {
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 13px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 10px;
+            outline: none;
+            font-size: 15px;
+        }
+
+        button {
+            width: 100%;
+            padding: 13px;
+            border: none;
+            border-radius: 10px;
+            background: white;
+            color: #667eea;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #eeeeee;
+        }
+
+        .back {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .back a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .error {
+            color: #ffdddd;
+            text-align: center;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="login-box">
+
+        <div class="logo">📚 Smart Library</div>
+
+        <div class="title">Staff Login</div>
+
+        <form onsubmit="staffLogin(event)">
+
+            <label>Staff ID</label>
+            <input type="text" id="staffId" placeholder="Enter Staff ID">
+
+            <label>Password</label>
+            <input type="password" id="password" placeholder="Enter Password">
+
+            <button type="submit">Login</button>
+
+            <div id="error" class="error"></div>
+
+        </form>
+
+        <div class="back">
+            <a href="index.html">← Back to Home</a>
+        </div>
+
+    </div>
+
+    <script>
+        function staffLogin(event) {
+
+            event.preventDefault();
+
+            let staffId = document.getElementById("staffId").value;
+            let password = document.getElementById("password").value;
+
+            // Demo Login Details
+            if (staffId === "staff01" && password === "1234") {
+
+                window.location.href = "staff-dashboard.html";
+
+            } else {
+
+                document.getElementById("error").innerHTML =
+                    "Invalid Staff ID or Password";
+
+            }
+        }
+    </script>
+
+</body>
+</html>

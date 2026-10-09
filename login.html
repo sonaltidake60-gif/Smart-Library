@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Smart Library</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body class="login-page">
+
+<div class="login-box">
+
+
+    <h2>Smart Library</h2>
+
+    <h3>Admin Login</h3>
+
+    <form onsubmit="return login()">
+
+        <input type="text" id="username" placeholder="Username" required>
+
+        <input type="password" id="password" placeholder="Password" required>
+
+        <button type="submit">Login</button>
+
+    </form>
+
+</div>
+<script>
+
+function login() {
+
+    let username =
+        document.getElementById("username").value;
+
+    let password =
+        document.getElementById("password").value;
+
+
+    if (username === "admin" && password === "1234") {
+
+        alert("Login Successful");
+
+        window.location.href = "dashboard.html";
+
+    }
+    else {
+
+        alert("Invalid Username or Password");
+
+    }
+
+    return false;
+}
+
+</script>
+
+</body>
+</html>
